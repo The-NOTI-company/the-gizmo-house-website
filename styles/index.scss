@@ -1,4 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
+@import './breakpoints/breakpoints.scss';
+
 
 *,
 html,
@@ -12,7 +14,6 @@ body{
     font-family: 'Inter', sans-serif;
 }
 
-
 .btn{
     background: linear-gradient(0deg, #C944F3 -0.06%, #6835DC 99.91%);
     border-radius: 8px;
@@ -25,11 +26,10 @@ body{
     text-decoration: none;
     cursor: pointer;
     text-align: center;
-    transition: all 2s;
+    transition: all .2s;
 
     &:hover{
         background: linear-gradient(0deg, #af3bd2 -0.06%, #542cb1 99.91%);
-
     }
 
 }
@@ -37,6 +37,14 @@ body{
 // Homepage
 .homepage-header{
     padding: 50px 100px;
+
+    @include media("<=phone"){
+        padding: 50px 30px;
+    }
+
+    @include media(">phone","<=tablet"){
+        padding: 50px;
+    }
 }
 
 .main-homepage{
@@ -47,10 +55,31 @@ body{
         flex-direction: row;
         justify-content: space-around;
 
+        @include media("<=phone"){
+            flex-direction: column-reverse;
+            align-items: center;
+        }
+
+        @include media(">phone","<=custom-view-1"){
+            flex-direction: column-reverse;
+            align-items: center;
+        }
+
         .not-found-text{
             display: flex;
             flex-direction: column;
             max-width: 40%;
+
+            @include media("<=phone"){
+                max-width: unset;
+                align-items: center;
+            }
+    
+            @include media(">phone","<=custom-view-1"){
+                max-width: unset;
+                align-items: center;
+
+            }
         }
 
         .not-found-title{
@@ -59,6 +88,18 @@ body{
             font-size: 61.04px;
             line-height: 74px;
             color: #212121;
+
+            @include media("<=phone"){
+                text-align: center;
+                font-size: 30px;
+                line-height: 44px;
+            }
+    
+            @include media(">phone","<=custom-view-1"){
+                font-size: 40px;
+                line-height:50px;
+                text-align: center;
+            }
         }
 
         .not-found-subtitle{
@@ -70,6 +111,15 @@ body{
             color: #212121;
             margin-top: 20px;
             margin-bottom: 49px;
+
+            @include media("<=phone"){
+                text-align: center;
+
+            }
+    
+            @include media(">phone","<=custom-view-1"){
+                text-align: center;
+            }
         }
 
         .contact-page-link{
@@ -82,6 +132,14 @@ body{
         align-self: flex-start;
         max-width: 543.12px;
 
+        @include media("<=phone"){
+            align-self: center;
+        }
+
+        @include media(">phone","<=custom-view-1"){
+            align-self: center;
+        }
+
         img{
             width: 100%;
         }
@@ -93,13 +151,42 @@ body{
     justify-content: space-between;
     padding: 48px 100px;
 
+    @include media("<phone"){
+        flex-direction: column-reverse;
+        align-items: center;
+    }
+
+    @include media(">=phone", "<tablet"){
+        flex-direction: column-reverse;
+        align-items: center;
+
+    }
+
     .rights-container{
+        @include media("<phone"){
+            margin-top: 1rem;
+        }
+
+        @include media(">=phone", "<tablet"){
+            margin-top: 1rem;
+
+        }
+
         h6{
             font-weight: 400;
             font-size: 14px;
             line-height: 17px;
             color: rgba(0, 0, 0, 0.5);
             margin-bottom: 4px;
+
+            
+            @include media("<phone"){
+                text-align: center;
+            }
+
+            @include media(">=phone", "<tablet"){
+                text-align: center;
+            }
         }
     }
 
@@ -121,16 +208,97 @@ body{
     flex-direction: row;
     justify-content: space-between;
 
+    @include media("<phone"){
+        justify-content: unset;
+    }
+
+
+    @include media(">=phone", "<custom-view-3"){
+        justify-content: unset;
+    }
+
     .contact-us-container{
         display: flex;
         flex-direction: column;
-        width: 40%;
+        width: 35%;
         padding: 50px 80px;
+
+        @include media("<phone"){
+            width: 100%;
+            padding: 50px 0;
+        }
+
+        @include media(">=phone", "<custom-view-3"){
+            width: 100%;
+            padding: 50px 0;
+
+        }
+
+        @include media(">=custom-view-3", "<desktop"){
+            width: 50%;
+        }
+    }
+
+    .logo{
+        @include media("<phone"){
+            margin: 1rem auto;
+            max-width: 76px;
+        }
+
+        @include media(">=phone", "<custom-view-3"){
+            margin: 1rem auto;
+            max-width: 76px;
+        }
+    }
+
+    .mobile-info-container{
+        display: none;
+        background-image: url('../assets/png/bg1.png');
+        background-repeat: no-repeat;
+        background-size: cover;
+        object-fit: fill;
+        padding: 93px 24px 106px 25px;
+
+        @include media("<phone"){
+            display: block;
+        }
+
+        @include media(">=phone", "<custom-view-3"){
+            display: block;
+        }
+
+        .info-title{
+            font-style: normal;
+            font-weight: 500;
+            font-size: 39.06px;
+            line-height: 47px;
+            text-align: center;
+            color: #FFFFFF;
+        }
+
+        .info-subtitle{
+            font-style: normal;
+            font-weight: 400;
+            font-size: 10px;
+            line-height: 12px;
+            text-align: center;
+            color: #FFFFFF;
+            margin: 9px 0;
+        }
+
     }
 
     .contact-form-container{
         display: flex;
         flex-direction: column;
+
+        @include media("<phone"){
+            padding: 0 2rem;
+        }
+
+        @include media(">=phone", "<custom-view-3"){
+            padding: 0 2rem;
+        }
 
         .contact-form-title{
             font-weight: 400;
@@ -138,6 +306,16 @@ body{
             line-height: 47px;
             color: #000000;
             margin-top: 4rem;
+
+            @include media("<phone"){
+                text-align: center;
+                font-size: 22px;
+            }
+    
+            @include media(">=phone", "<custom-view-3"){
+                text-align: center;
+                font-size: 25px;
+            }
         }
 
         .contact-form{
@@ -203,6 +381,26 @@ body{
         object-fit: fill;
         width: 60%;
         padding: 0 6rem;
+
+        
+        @include media("<phone"){
+            display: none;
+        }
+
+
+        @include media(">=phone", "<custom-view-3"){
+            display: none;
+            padding: 0 2rem;
+        }
+
+        @include media(">=custom-view-3", "<custom-view-2"){
+            padding: 0 2.5rem;
+        }
+
+        @include media(">=custom-view-2", "<desktop"){
+            padding: 0 4rem;
+
+        }
     }
 
     .main-info{
